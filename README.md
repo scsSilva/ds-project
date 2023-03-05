@@ -10,6 +10,9 @@ Para ver se a instalação foi concluída com sucesso, execute:
 glxgears &
 ```
 
+## RODAR A APLICAÇÃO (LINUX)
+ gcc main.c -o trabalho_ab1 -lglut -lGLU -lGl
+
 <br>
 
 ## INSTALAÇÃO DAS LIBS (MACOS)
