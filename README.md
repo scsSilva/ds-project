@@ -14,8 +14,7 @@ glxgears &
  gcc main.c -o trabalho_ab1 -lglut -lGLU -lG
  
 ```
-gcc main.c -o trabalho_ab1 -lglut -lGLU -lGL
-./trabalho_ab1
+gcc main.c -o test -lglut -lGLU -lGL && ./trabalho_ab1
 ```
 
 <br>
