@@ -11,7 +11,12 @@ glxgears &
 ```
 
 ## RODAR A APLICAÇÃO (LINUX)
- gcc main.c -o trabalho_ab1 -lglut -lGLU -lGL
+ gcc main.c -o trabalho_ab1 -lglut -lGLU -lG
+ 
+```
+gcc main.c -o trabalho_ab1 -lglut -lGLU -lGL
+./trabalho_ab1
+```
 
 <br>
 
