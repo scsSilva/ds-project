@@ -1,7 +1,7 @@
 ## INSTALAÇÃO DAS LIBS (LINUX)
 
 ```
-sudo apt install -y mesa-common-dev mesa-utils freeglut3-dev
+sudo apt install -y mesa-common-dev mesa-utils freeglut3-dev libsoil-dev
 ```
 
 Para ver se a instalação foi concluída com sucesso, execute:
@@ -11,7 +11,7 @@ glxgears &
 ```
 
 ## RODAR A APLICAÇÃO (LINUX)
- gcc main.c -o trabalho_ab1 -lglut -lGLU -lG
+ gcc main.c -o trabalho_ab1 -lglut -lGLU -lG -lSOIL
  
 ```
 gcc main.c -o test -lglut -lGLU -lGL && ./trabalho_ab1
