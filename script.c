@@ -75,35 +75,35 @@ void init() {
     glClearColor(1.0, 1.0, 1.0, 1.0); // Define a cor de fundo da janela como branco
 
     texture1 = SOIL_load_OGL_texture(
-        "images/stone-mult.png", // Nome do arquivo de textura
+        "imgs/multi-tiles/stone-mult.png", // Nome do arquivo de textura
         SOIL_LOAD_AUTO, // Opções de carregamento automático
         SOIL_CREATE_NEW_ID, // Cria um novo ID para a textura
         SOIL_FLAG_INVERT_Y // Inverte a orientação vertical da textura
     );
 
     texture2 = SOIL_load_OGL_texture(
-        "images/dark-wood-2.png", // Nome do arquivo de textura
+        "imgs/wood-floor/dark-wood-2.png", // Nome do arquivo de textura
         SOIL_LOAD_AUTO, // Opções de carregamento automático
         SOIL_CREATE_NEW_ID, // Cria um novo ID para a textura
         SOIL_FLAG_INVERT_Y // Inverte a orientação vertical da textura
     );
 
     texture3 = SOIL_load_OGL_texture(
-        "images/porcelain-tile-beige-1.jpg", // Nome do arquivo de textura
+        "imgs/porcelain/porcelain-tile-beige-1.jpg", // Nome do arquivo de textura
         SOIL_LOAD_AUTO, // Opções de carregamento automático
         SOIL_CREATE_NEW_ID, // Cria um novo ID para a textura
         SOIL_FLAG_INVERT_Y // Inverte a orientação vertical da textura
     );
 
     texture4 = SOIL_load_OGL_texture(
-        "images/porcelain-tile-color.jpg", // Nome do arquivo de textura
+        "imgs/porcelain/porcelain-tile-color.jpg", // Nome do arquivo de textura
         SOIL_LOAD_AUTO, // Opções de carregamento automático
         SOIL_CREATE_NEW_ID, // Cria um novo ID para a textura
         SOIL_FLAG_INVERT_Y // Inverte a orientação vertical da textura
     );
 
     texture5 = SOIL_load_OGL_texture(
-        "images/icon_banheiro.png", // Nome do arquivo de textura
+        "imsgs/icon_banheiro.png", // Nome do arquivo de textura
         SOIL_LOAD_AUTO, // Opções de carregamento automático
         SOIL_CREATE_NEW_ID, // Cria um novo ID para a textura
         SOIL_FLAG_INVERT_Y // Inverte a orientação vertical da textura
