@@ -11,10 +11,9 @@ glxgears &
 ```
 
 ## RODAR A APLICAÇÃO (LINUX)
- gcc main.c -o trabalho_ab1 -lglut -lGLU -lG -lSOIL
  
 ```
-gcc main.c -o test -lglut -lGLU -lGL && ./trabalho_ab1
+gcc main.c -o trabalho_ab1 -lglut -lGLU -lG -lSOIL
 ```
 
 <br>
