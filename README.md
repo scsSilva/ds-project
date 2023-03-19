@@ -23,3 +23,8 @@ gcc -o planta planta.c -lGL -lglut -lGLU -lSOIL
 ```
 defaults write org.macosforge.xquartz.X11 enable_iglx -bool true
 ```
+
+### TESTAR UTILS (LINUX)
+```
+ gcc utils.c -o executavel -lglut -lGLU -lGL -lm
+ ```
