@@ -83,7 +83,10 @@ void display()
     glVertex2f(-0.7f, -0.75f);
     glEnd();
 
-    draw_square_by_area(100); //  implementa função da nossa biblioteca utils
+    Point p;
+    p.x = 0.0f;
+    p.y = 0.0f;
+    draw_square_by_area(400, &p); //  implementa função da nossa biblioteca utils
     // glLineWidth(5.0);
     // glColor3f(255, 255, 255);
     // glBegin(GL_LINE_LOOP);
