@@ -97,6 +97,11 @@ void display()
     draw_square_by_area(100, &p); //  implementa função da nossa biblioteca utils
     draw_square_by_area(100, &p_linha); //  implementa função da nossa biblioteca utils
     draw_square_by_area(100, &p_linha_dois); //  implementa função da nossa biblioteca utils
+
+    Point door_position;
+    door_position.x = -0.5;
+    door_position.y = -0.76;
+    draw_door(&door_position);
     // glLineWidth(5.0);
     // glColor3f(255, 255, 255);
     // glBegin(GL_LINE_LOOP);
@@ -152,10 +157,10 @@ int main(int argc, char **argv)
     glutInit(&argc, argv);                       // Inicializa o GLUT
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB); // Define o modo de exibição como single buffer e RGB
     glutInitWindowSize(1170, 800);               // Define o tamanho da janela
-    glutInitWindowPosition(600, 300);            // Define a posição da janela na tela
+    glutInitWindowPosition(0, 0);            // Define a posição da janela na tela
     glutCreateWindow("Planta Baixa");            // Cria a janela com o título "Texture Demo"
 
-    init(); // Inicializa a cena
+   // init(); // Inicializa a cena
 
     glutDisplayFunc(display); // Define a função de desenho a ser chamada quando a janela for exibida
 

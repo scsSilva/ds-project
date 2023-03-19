@@ -10,5 +10,6 @@ typedef struct
 } Point;
 
 void draw_square_by_area(double area, Point* p);
+void draw_door();
 
 #endif
