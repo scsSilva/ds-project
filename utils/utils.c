@@ -42,7 +42,7 @@ void draw_door(Point *position) {
     float anguloInicial = 0.0, anguloFinal = 90.0;
     float angulo;
 
-    glColor3f(0.9, 0.9, 0.9); 
+    glColor4f(0.8, 0.8, 0.8,0.7); 
 
     glBegin(GL_TRIANGLE_FAN);
     glVertex2f(position->x, position->y); 
