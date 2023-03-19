@@ -84,9 +84,19 @@ void display()
     glEnd();
 
     Point p;
-    p.x = 0.0f;
-    p.y = 0.0f;
-    draw_square_by_area(400, &p); //  implementa função da nossa biblioteca utils
+    p.x = 0.75f;
+    p.y = -0.75f;
+
+    Point p_linha;
+    p_linha.x = -0.75f;
+    p_linha.y = -0.75f;
+
+    Point p_linha_dois;
+    p_linha_dois.x = 0.75f;
+    p_linha_dois.y = 0.75f;
+    draw_square_by_area(100, &p); //  implementa função da nossa biblioteca utils
+    draw_square_by_area(100, &p_linha); //  implementa função da nossa biblioteca utils
+    draw_square_by_area(100, &p_linha_dois); //  implementa função da nossa biblioteca utils
     // glLineWidth(5.0);
     // glColor3f(255, 255, 255);
     // glBegin(GL_LINE_LOOP);

@@ -11,12 +11,12 @@ void draw_square_by_area(double area, Point *p)
     glColor3f(0.0, 0.0, 0.0);
 
     glBegin(GL_LINES);
-    glVertex2f(p->x, p->x);
-    glVertex2f(width, p->x);
+    glVertex2f(p->x, p->y);
+    glVertex2f(width, p->y);
     glEnd();
 
     glBegin(GL_LINES);
-    glVertex2f(width, p->x);
+    glVertex2f(width, p->y);
     glVertex2f(width, width);
     glEnd();
 
@@ -27,6 +27,6 @@ void draw_square_by_area(double area, Point *p)
 
     glBegin(GL_LINES);
     glVertex2f(p->x, width);
-    glVertex2f(p->x, p->x);
+    glVertex2f(p->x, p->y);
     glEnd();
 }
