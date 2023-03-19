@@ -13,7 +13,7 @@ glxgears &
 ## RODAR A APLICAÇÃO (LINUX)
  
 ```
-gcc main.c -o trabalho_ab1 -lglut -lGLU -lG -lSOIL
+gcc -o planta planta.c -lGL -lglut -lGLU -lSOIL
 ```
 
 <br>
