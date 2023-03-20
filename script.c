@@ -1,169 +1,256 @@
-#include <SOIL/SOIL.h> // Inclui a biblioteca SOIL, utilizada para carregar a textura
-#include <GL/glut.h>   // Inclui a biblioteca GLUT, utilizada para criar a janela e o contexto OpenGL
-#include "./utils/utils.h"
+#include <GL/gl.h>
+#include <GL/glut.h>
+#include <GL/glu.h>
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
 
-GLuint texture1, texture2, texture3, texture4, texture5; // Variável para armazenar o ID da textura
+void display() {
+    // CONFIGURAÇÕES INICIAIS
+    glClear(GL_COLOR_BUFFER_BIT);
 
-void display()
-{
-    glClear(GL_COLOR_BUFFER_BIT); // Limpa o buffer de cores
-    glEnable(GL_TEXTURE_2D);      // Habilita o uso de texturas
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
-    glBindTexture(GL_TEXTURE_2D, texture1); // Seleciona a textura a ser utilizada
-    glBegin(GL_QUADS);                      // Inicia o desenho de um quadrado
-    glTexCoord2f(0, 0);
-    glVertex2f(-1, -1); // Define a coordenada de textura e de vértice do primeiro vértice do quadrado
-    glTexCoord2f(1, 0);
-    glVertex2f(1, -1); // Define a coordenada de textura e de vértice do segundo vértice do quadrado
-    glTexCoord2f(1, 1);
-    glVertex2f(1, 1); // Define a coordenada de textura e de vértice do terceiro vértice do quadrado
-    glTexCoord2f(0, 1);
-    glVertex2f(-1, 1); // Define a coordenada de textura e de vértice do quarto vértice do quadrado
-    glEnd();           // Finaliza o desenho do quadrado
-
-    glLineWidth(5.0);
-    glColor3f(166, 160, 159);
-    glBegin(GL_LINE_LOOP);
-    glVertex2f(-0.75f, 0.75f);
-    glVertex2f(0.75f, 0.75f);
-    glVertex2f(0.75f, -0.75f);
-    glVertex2f(-0.75f, -0.75f);
-    glEnd();
-
-    glBindTexture(GL_TEXTURE_2D, texture2);
+    // TERRENO QUADRADO
+    glColor3f(255, 255, 255);
     glBegin(GL_QUADS);
-    glTexCoord2f(0, 0);
-    glVertex2f(-0.75f, 0.75f); // Define a coordenada de textura e de vértice do primeiro vértice do quadrado
-    glTexCoord2f(1, 0);
-    glVertex2f(0.75f, 0.75f); // Define a coordenada de textura e de vértice do segundo vértice do quadrado
-    glTexCoord2f(1, 1);
-    glVertex2f(0.75f, -0.75f); // Define a coordenada de textura e de vértice do terceiro vértice do quadrado
-    glTexCoord2f(0, 1);
-    glVertex2f(-0.75f, -0.75f);
+    glVertex2f(-0.9, -0.9);
+    glVertex2f(-0.9, 0.9);
+    glVertex2f(0.9, 0.9);
+    glVertex2f(0.9, -0.9);
     glEnd();
+
+    // BORDA DO TERRENO
+    glLineWidth(1.0);
+    glColor3f(0, 0, 0);
+    glBegin(GL_LINE_LOOP);
+    glVertex2f(-0.9, -0.9);
+    glVertex2f(-0.9, 0.9);
+    glVertex2f(0.9, 0.9);
+    glVertex2f(0.9, -0.9);
+    glEnd();
+
+    // "PAREDES"
+    glColor3f(255, 255, 255);
+    glBegin(GL_QUADS);
+    glVertex2f(-0.88, -0.88);
+    glVertex2f(-0.88, 0.88);
+    glVertex2f(0.88, 0.88);
+    glVertex2f(0.88, -0.88);
+    glEnd();
+
+    // BORDA DO QUADRADO QUE REPRESENTA AS "PAREDES"
+    glLineWidth(1.0);
+    glColor3f(0, 0, 0);
+    glBegin(GL_LINE_LOOP);
+    glVertex2f(-0.88, -0.88);
+    glVertex2f(-0.88, 0.88);
+    glVertex2f(0.88, 0.88);
+    glVertex2f(0.88, -0.88);
+    glEnd();
+
+    // SALA DE JOGOS/ARTES
+    glColor3f(255, 255, 255);
+    glBegin(GL_QUADS);
+    glVertex2f(-0.28, -0.88);
+    glVertex2f(-0.28, -0.28);
+    glVertex2f(-0.05, -0.28);
+    glVertex2f(-0.05, -0.18);
+    glVertex2f(0.88, -0.18);
+    glVertex2f(0.88, -0.88);
+    glEnd();
+
+    // MEDIDA
+    glColor3f(0.0, 0.0, 0.0);
+    glRasterPos2f(0.44, -0.16);
+    glutBitmapString(GLUT_BITMAP_HELVETICA_12, "5,35");
+
+    // NOME "SALA DE JOGOS/ARTES"
+    glColor3f(0.0, 0.0, 0.0);
+    glRasterPos2f(0.24, -0.55);
+    glutBitmapString(GLUT_BITMAP_HELVETICA_18, "SALA DE JOGOS/ARTES");
+
+    // BORDA DA SALA DE JOGOS/ARTES
+    glLineWidth(1.0);
+    glColor3f(0, 0, 0);
+    glBegin(GL_LINE_LOOP);
+    glVertex2f(-0.28, -0.88);
+    glVertex2f(-0.28, -0.28);
+    glVertex2f(-0.05, -0.28);
+    glVertex2f(-0.05, -0.18);
+    glVertex2f(0.88, -0.18);
+    glVertex2f(0.88, -0.88);
+    glEnd();
+
+    // SALA DE JANTAR
+    glColor3f(255, 255, 255);
+    glBegin(GL_QUADS);
+    glVertex2f(-0.58, -0.28);
+    glVertex2f(-0.88, -0.28);
+    glVertex2f(-0.88, -0.88);
+    glVertex2f(-0.28, -0.88);
+    glVertex2f(-0.28, -0.28);
+    glVertex2f(-0.32, -0.28);
+    glEnd();
+
+    // BORDA DA SALA DE JANTAR
+    glLineWidth(1.0);
+    glColor3f(0, 0, 0);
+    glBegin(GL_LINE_STRIP);
+    glVertex2f(-0.58, -0.28);
+    glVertex2f(-0.88, -0.28);
+    glVertex2f(-0.88, -0.88);
+    glVertex2f(-0.28, -0.88);
+    glVertex2f(-0.28, -0.28);
+    glVertex2f(-0.32, -0.28);
+    glEnd();
+
+    // NOME "SALA DE JANTAR"
+    glColor3f(0.0, 0.0, 0.0);
+    glRasterPos2f(-0.7, -0.55);
+    glutBitmapString(GLUT_BITMAP_HELVETICA_18, "SALA DE JANTAR");
+
+    // MEDIDA
+    glColor3f(0.0, 0.0, 0.0);
+    glRasterPos2f(-0.35, -0.55);
+    glutBitmapString(GLUT_BITMAP_HELVETICA_12, "3,50");
 
     // COZINHA
-    glBindTexture(GL_TEXTURE_2D, texture3);
+    glColor3f(255, 255, 255);
     glBegin(GL_QUADS);
-    glTexCoord2f(0, 0);
-    glVertex2f(-0.75f, 0.75f); // Define a coordenada de textura e de vértice do primeiro vértice do quadrado
-    glTexCoord2f(1, 0);
-    glVertex2f(-0.35f, 0.75f); // Define a coordenada de textura e de vértice do segundo vértice do quadrado
-    glTexCoord2f(1, 1);
-    glVertex2f(-0.35f, 0.35f); // Define a coordenada de textura e de vértice do terceiro vértice do quadrado
-    glTexCoord2f(0, 1);
-    glVertex2f(-0.75f, 0.35f);
+    glVertex2f(-0.32, -0.28);
+    glVertex2f(-0.32, -0.24);
+    glVertex2f(-0.1, -0.24);
+    glVertex2f(-0.1, 0.2);
+    glVertex2f(-0.4, 0.2);
+    glVertex2f(-0.4, 0.24);
+    glVertex2f(-0.58, 0.24);
+    glVertex2f(-0.58, 0.2);
+    glVertex2f(-0.88, 0.2);
+    glVertex2f(-0.88, -0.24);
+    glVertex2f(-0.58, -0.24);
+    glVertex2f(-0.58, -0.28);
     glEnd();
 
-    // BANHEIRO
-    glActiveTexture(texture4);
-    glBindTexture(GL_TEXTURE_2D, texture4);
-    glBegin(GL_QUADS);
-    glTexCoord2f(0, 0);
-    glVertex2f(-0.75f, -0.35f); // Define a coordenada de textura e de vértice do primeiro vértice do quadrado
-    glTexCoord2f(1, 0);
-    glVertex2f(-0.35f, -0.35f); // Define a coordenada de textura e de vértice do segundo vértice do quadrado
-    glTexCoord2f(1, 1);
-    glVertex2f(-0.35f, -0.75f); // Define a coordenada de textura e de vértice do terceiro vértice do quadrado
-    glTexCoord2f(0, 1);
-    glVertex2f(-0.75f, -0.75f);
-    glEnd();
-    glActiveTexture(texture5);
-    glBindTexture(GL_TEXTURE_2D, texture5);
-    glBegin(GL_QUADS);
-    glTexCoord2f(0, 1);
-    glVertex2f(-0.7f, -0.55f); // Define a coordenada de textura e de vértice do primeiro vértice do quadrado
-    glTexCoord2f(1, 1);
-    glVertex2f(-0.57f, -0.55f); // Define a coordenada de textura e de vértice do segundo vértice do quadrado
-    glTexCoord2f(1, 0);
-    glVertex2f(-0.57f, -0.75f); // Define a coordenada de textura e de vértice do terceiro vértice do quadrado
-    glTexCoord2f(0, 0);
-    glVertex2f(-0.7f, -0.75f);
+    // BORDA DA COZINHA
+    glLineWidth(1.0);
+    glColor3f(0, 0, 0);
+    glBegin(GL_LINE_STRIP);
+    glVertex2f(-0.32, -0.28);
+    glVertex2f(-0.32, -0.24);
+    glVertex2f(-0.1, -0.24);
+    glVertex2f(-0.1, 0.2);
+    glVertex2f(-0.4, 0.2);
+    glVertex2f(-0.4, 0.24);
+    glVertex2f(-0.58, 0.24);
+    glVertex2f(-0.58, 0.2);
+    glVertex2f(-0.88, 0.2);
+    glVertex2f(-0.88, -0.24);
+    glVertex2f(-0.58, -0.24);
+    glVertex2f(-0.58, -0.28);
     glEnd();
 
-    Point p;
-    p.x = 0.75f;
-    p.y = -0.75f;
+    // NOME "COZINHA"
+    glColor3f(0.0, 0.0, 0.0);
+    glRasterPos2f(-0.58, -0.05);
+    glutBitmapString(GLUT_BITMAP_HELVETICA_18, "COZINHA");
 
-    Point p_linha;
-    p_linha.x = -0.75f;
-    p_linha.y = -0.75f;
+    // ÁREA DE SERVIÇO
+    glColor3f(255, 255, 255);
+    glBegin(GL_QUADS);
+    glVertex2f(-0.4, 0.24);
+    glVertex2f(-0.4, 0.88);
+    glVertex2f(-0.88, 0.88);
+    glVertex2f(-0.88, 0.24);
+    glEnd();
 
-    Point p_linha_dois;
-    p_linha_dois.x = 0.75f;
-    p_linha_dois.y = 0.75f;
-    draw_square_by_area(100, &p);            //  implementa função da nossa biblioteca utils
-    draw_square_by_area(100, &p_linha);      //  implementa função da nossa biblioteca utils
-    draw_square_by_area(100, &p_linha_dois); //  implementa função da nossa biblioteca utils
+    // BORDA DA ÁREA DE SERVIÇO
+    glLineWidth(1.0);
+    glColor3f(0, 0, 0);
+    glBegin(GL_LINE_LOOP);
+    glVertex2f(-0.4, 0.24);
+    glVertex2f(-0.4, 0.88);
+    glVertex2f(-0.88, 0.88);
+    glVertex2f(-0.88, 0.24);
+    glEnd();
 
-    Point door_position;
-    door_position.x = -0.5;
-    door_position.y = -0.76;
-    draw_door(&door_position);
-    // glLineWidth(5.0);
-    // glColor3f(255, 255, 255);
-    // glBegin(GL_LINE_LOOP);
-    // glVertex2f(0.65f, -0.75f);
-    // glVertex2f(0.75f, -0.75f);
-    // glEnd();
+    // NOME "ÁREA DE SERVIÇO"
+    glColor3f(0.0, 0.0, 0.0);
+    glRasterPos2f(-0.78, 0.6);
+    glutBitmapString(GLUT_BITMAP_HELVETICA_18, "AREA DE SERVICO");
 
-    glFlush(); // Renderiza o buffer de comandos na tela
+    // SALA DE ESTAR
+    glColor3f(255, 255, 255);
+    glBegin(GL_QUADS);
+    glVertex2f(-0.05, 0.84);
+    glVertex2f(-0.05, 0.88);
+    glVertex2f(0.88, 0.88);
+    glVertex2f(0.88, -0.18);
+    glVertex2f(-0.05, -0.18);
+    glVertex2f(-0.05, 0.6);
+    glEnd();
+
+    // BORDA DA SALA DE ESTAR
+    glLineWidth(1.0);
+    glColor3f(0, 0, 0);
+    glBegin(GL_LINE_STRIP);
+    glVertex2f(-0.05, 0.84);
+    glVertex2f(-0.05, 0.88);
+    glVertex2f(0.88, 0.88);
+    glVertex2f(0.88, -0.18);
+    glVertex2f(-0.05, -0.18);
+    glVertex2f(-0.05, 0.6);
+    glEnd();
+
+    // NOME "SALA DE ESTAR"
+    glColor3f(0.0, 0.0, 0.0);
+    glRasterPos2f(0.25, 0.35);
+    glutBitmapString(GLUT_BITMAP_HELVETICA_18, "SALA DE ESTAR");
+
+    // BANHEIRO SOCIAL
+    glColor3f(255, 255, 255);
+    glBegin(GL_QUADS);
+    glVertex2f(-0.05, 0.6);
+    glVertex2f(-0.1, 0.6);
+    glVertex2f(-0.1, 0.24);
+    glVertex2f(-0.36, 0.24);
+    glVertex2f(-0.36, 0.88);
+    glVertex2f(-0.1, 0.88);
+    glVertex2f(-0.1, 0.84);
+    glVertex2f(-0.05, 0.84);
+    glEnd();
+
+
+
+    // BORDA DO BANHEIRO SOCIAL
+    glLineWidth(1.0);
+    glColor3f(0, 0, 0);
+    glBegin(GL_LINE_STRIP);
+    glVertex2f(-0.05, 0.6);
+    glVertex2f(-0.1, 0.6);
+    glVertex2f(-0.1, 0.24);
+    glVertex2f(-0.36, 0.24);
+    glVertex2f(-0.36, 0.88);
+    glVertex2f(-0.1, 0.88);
+    glVertex2f(-0.1, 0.84);
+    glVertex2f(-0.05, 0.84);
+    glEnd();
+
+    // NOME "SALA DE ESTAR"
+    glColor3f(0.0, 0.0, 0.0);
+    glRasterPos2f(-0.3, 0.55);
+    glutBitmapString(GLUT_BITMAP_HELVETICA_18, "B. SOCIAL");
+
+    glFlush();
 }
 
-void init()
-{
-    glClearColor(0.0, 0.0, 0.0, 0.0); // Define a cor de fundo da janela como branco
+int main(int argc, char **argv) {
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+    glutInitWindowSize(1100, 800);
+    glutCreateWindow("Planta baixa em C");
+    glutDisplayFunc(display);
+    glClearColor(255, 255, 255, 1.0);
+    gluOrtho2D(-1.0, 1.0, -1.0, 1.0);
+    glutMainLoop();
 
-    texture1 = SOIL_load_OGL_texture(
-        "imgs/multi-tiles/stone-mult.png", // Nome do arquivo de textura
-        SOIL_LOAD_AUTO,                    // Opções de carregamento automático
-        SOIL_CREATE_NEW_ID,                // Cria um novo ID para a textura
-        SOIL_FLAG_INVERT_Y                 // Inverte a orientação vertical da textura
-    );
-
-    texture2 = SOIL_load_OGL_texture(
-        "imgs/wood-floor/dark-wood-2.png", // Nome do arquivo de textura
-        SOIL_LOAD_AUTO,                    // Opções de carregamento automático
-        SOIL_CREATE_NEW_ID,                // Cria um novo ID para a textura
-        SOIL_FLAG_INVERT_Y                 // Inverte a orientação vertical da textura
-    );
-
-    texture3 = SOIL_load_OGL_texture(
-        "imgs/porcelain/porcelain-tile-beige-1.jpg", // Nome do arquivo de textura
-        SOIL_LOAD_AUTO,                              // Opções de carregamento automático
-        SOIL_CREATE_NEW_ID,                          // Cria um novo ID para a textura
-        SOIL_FLAG_INVERT_Y                           // Inverte a orientação vertical da textura
-    );
-
-    texture4 = SOIL_load_OGL_texture(
-        "imgs/porcelain/porcelain-tile-color.jpg", // Nome do arquivo de textura
-        SOIL_LOAD_AUTO,                            // Opções de carregamento automático
-        SOIL_CREATE_NEW_ID,                        // Cria um novo ID para a textura
-        SOIL_FLAG_INVERT_Y                         // Inverte a orientação vertical da textura
-    );
-
-    texture5 = SOIL_load_OGL_texture(
-        "imsgs/icon_banheiro.png", // Nome do arquivo de textura
-        SOIL_LOAD_AUTO,            // Opções de carregamento automático
-        SOIL_CREATE_NEW_ID,        // Cria um novo ID para a textura
-        SOIL_FLAG_INVERT_Y         // Inverte a orientação vertical da textura
-    );
-}
-
-int main(int argc, char **argv)
-{
-    glutInit(&argc, argv);                       // Inicializa o GLUT
-    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB); // Define o modo de exibição como single buffer e RGB
-    glutInitWindowSize(1170, 800);               // Define o tamanho da janela
-    glutInitWindowPosition(0, 0);                // Define a posição da janela na tela
-    glutCreateWindow("Planta Baixa");            // Cria a janela com o título "Texture Demo"
-
-    // init(); // Inicializa a cena
-
-    glutDisplayFunc(display); // Define a função de desenho a ser chamada quando a janela for exibida
-
-    glutMainLoop(); // Inicia o loop principal do GLUT
-    return 0;       // Retorna 0 para indicar que a aplicação foi encerrada com sucesso
+    return 0;
 }
