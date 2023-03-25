@@ -1,7 +1,17 @@
+// Silenciando as notificações de obsolescência da biblioteca OpenNGL no MacOS
 #ifndef UTILS_H
 #define UTILS_H
-#include <GL/glut.h> // Inclui a biblioteca GLUT, utilizada para criar a janela e o contexto OpenGL
+
+#ifdef __APPLE__
+#define GL_SILENCE_DEPRECATION
+#include <OpenGL/glu.h>
+#include <OpenGL/gl.h>
+#include <GLUT/glut.h>
+#else
 #include <GL/gl.h>
+#include <GL/glut.h>
+#include <GL/glu.h>
+#endif
 
 typedef struct
 {

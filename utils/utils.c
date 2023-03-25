@@ -1,9 +1,20 @@
-#include "utils.h"
-#include <GL/glut.h> // Inclui a biblioteca GLUT, utilizada para criar a janela e o contexto OpenGL
+// Silenciando as notificações de obsolescência da biblioteca OpenNGL no MacOS
+#ifdef __APPLE__
+#define GL_SILENCE_DEPRECATION
+#include <GLUT/glut.h>
+#include <OpenGL/gl.h>
+#include <GLUT/glut.h>
+#else
 #include <GL/gl.h>
+#include <GL/glut.h>
+#include <GL/glu.h>
+#define M_PI 3.14159265358979323846 /* pi */
+#endif
+
+#include "utils.h"
 #include <math.h>
 #include <stdio.h>
-#define M_PI 3.14159265358979323846 /* pi */
+
 
 void draw_square_by_area(double area, Point *p)
 {

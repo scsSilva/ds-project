@@ -1,6 +1,15 @@
+// Silenciando as notificações de obsolescência da biblioteca OpenNGL no MacOS
+#ifdef __APPLE__
+#define GL_SILENCE_DEPRECATION
+#include <GLUT/glut.h>
+#include <OpenGL/gl.h>
+#include <GLUT/glut.h>
+#else
 #include <GL/gl.h>
 #include <GL/glut.h>
 #include <GL/glu.h>
+#endif
+
 #include <stdio.h>
 #include <string.h>
 #include <math.h>

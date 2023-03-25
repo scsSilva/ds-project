@@ -11,7 +11,7 @@ glxgears &
 ```
 
 ## RODAR A APLICAÇÃO (LINUX)
- 
+
 ```
 gcc -o script script.c ./utils/utils.c -lGL -lglut -lGLU -lSOIL -lm
 ```
