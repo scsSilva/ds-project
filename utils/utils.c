@@ -15,7 +15,6 @@
 #include <math.h>
 #include <stdio.h>
 
-
 void draw_square_by_area(double area, Point *p)
 {
     double width = sqrt(area) / 100;
@@ -43,10 +42,8 @@ void draw_square_by_area(double area, Point *p)
     glEnd();
 }
 
-void draw_door(Point *position)
+void draw_door(Point *position, float raio)
 {
-    float raio = 0.1;
-    float x = -0.6f, y = -0.7f;
     float anguloInicial = 0.0, anguloFinal = 90.0;
     float angulo;
 
@@ -59,6 +56,37 @@ void draw_door(Point *position)
         glVertex2f(position->x + (raio * cos(angulo * M_PI / 180.0)), position->y + (raio * sin(angulo * M_PI / 180.0)));
     }
     glEnd();
+}
 
-    glEnd();
+void drawSpiralStairs(float x, float y) {
+    const float radius = 0.1;
+    const int numTriangles = 25; 
+    const float triangleAngle = (3 * M_PI / 2) / (numTriangles / 2);
+
+    for (int i = 0; i < numTriangles / 2; i++) {
+        float angle1 = i * triangleAngle;
+        float angle2 = (i + 1) * triangleAngle;
+        float x1 = x + radius * cos(angle1);
+        float y1 = y + radius * sin(angle1);
+        float x2 = x + radius * cos(angle2);
+        float y2 = y + radius * sin(angle2);
+        float xm = x;
+        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+        glColor3f(1.0, 1.0, 1.0);
+        glBegin(GL_TRIANGLES);
+        glVertex2f(xm, y);
+        glVertex2f(x1, y1);
+        glVertex2f(x2, y2);
+        glEnd();
+
+        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+        glLineWidth(1.0);
+        glColor3f(0.0, 0.0, 0.0);
+        glBegin(GL_TRIANGLES);
+        glVertex2f(xm, y);
+        glVertex2f(x1, y1);
+        glVertex2f(x2, y2);
+        glEnd();
+    }
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 }

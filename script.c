@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
+#include "./utils/utils.h"
 #include <SOIL/SOIL.h>
 
 int screen = 0;
@@ -14,7 +15,9 @@ int east_pressed = 0;
 int west_pressed = 0;
 int keys[256];
 
-void ground_floor() {
+void ground_floor()
+{
+
     // CONFIGURAÇÕES INICIAIS
     glClear(GL_COLOR_BUFFER_BIT);
 
@@ -29,7 +32,7 @@ void ground_floor() {
 
     // TÍTULO
     glColor3f(0.0, 0.0, 0.0);
-    glRasterPos2f(0.88, -0.97);
+    glRasterPos2f(-0.9, -0.97);
     glutBitmapString(GLUT_BITMAP_HELVETICA_18, "PLANTA BAIXA - PAV. TERREO");
 
     // BORDA DO TERRENO
@@ -50,6 +53,11 @@ void ground_floor() {
     glVertex2f(0.88, 0.88);
     glVertex2f(0.88, -0.88);
     glEnd();
+
+    Point p;
+    p.x = -0.58f;
+    p.y = 0.0f;
+    // draw_door(&p, 0.25);
 
     // BORDA DO QUADRADO QUE REPRESENTA AS "PAREDES"
     glLineWidth(1.0);
@@ -241,27 +249,35 @@ void ground_floor() {
     glRasterPos2f(-0.3, 0.55);
     glutBitmapString(GLUT_BITMAP_HELVETICA_18, "B. SOCIAL");
 
+    drawSpiralStairs(0.7, 0.7);
+
     glFlush();
 }
 
-void update(int value) {
-    if (keys['n']) {
+void update(int value)
+{
+    if (keys['n'])
+    {
         angle = 0;
     }
-    if (keys['l']) {
+    if (keys['l'])
+    {
         angle = -90;
     }
-    if (keys['s']) {
+    if (keys['s'])
+    {
         angle = 180;
     }
-    if (keys['o']) {
+    if (keys['o'])
+    {
         angle = 90;
     }
     glutPostRedisplay();
     glutTimerFunc(16, update, 0);
 }
 
-void first_floor() {
+void first_floor()
+{
     printf("ANGLE = %lf\n", angle);
     glutTimerFunc(10, update, 0);
 
@@ -344,7 +360,7 @@ void first_floor() {
     // NOME "SALA DE LEITURA"
     glColor3f(0.0, 0.0, 0.0);
     glRasterPos2f(-0.1, -0.73);
-    glutBitmapString(GLUT_BITMAP_HELVETICA_18, "SACADA"); 
+    glutBitmapString(GLUT_BITMAP_HELVETICA_18, "SACADA");
 
     // SALA DE LEITURA
     glColor3f(255, 255, 255);
@@ -568,71 +584,80 @@ void first_floor() {
     glColor3f(0.0, 0.0, 0.0);
     glRasterPos2f(0.7, -0.3);
     glutBitmapString(GLUT_BITMAP_HELVETICA_12, "WCB 1");
+    drawSpiralStairs(0.7, 0.7);
+
 
     glutSwapBuffers();
     glFlush();
 }
 
-void scan(unsigned char key, int x, int y) {
+void scan(unsigned char key, int x, int y)
+{
     keys[key] = 1;
-    switch (key) {
-        case 'n':
-            if (angle != 0) {
-                angle = 0;
-                glutPostRedisplay();
-                printf("TECLA %c PRESSIONADA. ANGULO = %lf\n", key, angle);
-            }
+    switch (key)
+    {
+    case 'n':
+        if (angle != 0)
+        {
+            angle = 0;
+            glutPostRedisplay();
+            printf("TECLA %c PRESSIONADA. ANGULO = %lf\n", key, angle);
+        }
 
-            break;
-        case 'l':
-            if (angle != -90) {
-                angle = -90;
-                glutPostRedisplay();
-                printf("TECLA %c PRESSIONADA. ANGULO = %lf\n", key, angle);
-            }
+        break;
+    case 'l':
+        if (angle != -90)
+        {
+            angle = -90;
+            glutPostRedisplay();
+            printf("TECLA %c PRESSIONADA. ANGULO = %lf\n", key, angle);
+        }
 
-            break;
-        case 's':
-            if (angle != 180) {
-                angle = 180;
-                glutPostRedisplay();
-                printf("TECLA %c PRESSIONADA. ANGULO = %lf\n", key, angle);
-            }
+        break;
+    case 's':
+        if (angle != 180)
+        {
+            angle = 180;
+            glutPostRedisplay();
+            printf("TECLA %c PRESSIONADA. ANGULO = %lf\n", key, angle);
+        }
 
-            break;
-        case 'o':
-            if (angle != 90) {
-                angle = 90;
-                glutPostRedisplay();
-                printf("TECLA %c PRESSIONADA. ANGULO = %lf\n", key, angle);
-            }
-            
-            break;
-        default:
-            break;
+        break;
+    case 'o':
+        if (angle != 90)
+        {
+            angle = 90;
+            glutPostRedisplay();
+            printf("TECLA %c PRESSIONADA. ANGULO = %lf\n", key, angle);
+        }
+
+        break;
+    default:
+        break;
     }
 }
 
-void keyup(unsigned char key, int x, int y) {
+void keyup(unsigned char key, int x, int y)
+{
     keys[key] = 0;
 }
 
-
-int main(int argc, char **argv) {
+int main(int argc, char **argv)
+{
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
     glutInitWindowSize(1100, 800);
-    
+
     glutCreateWindow("Terreo");
     glutDisplayFunc(ground_floor);
     glClearColor(255, 255, 255, 1.0);
-    
+
     glutCreateWindow("Primeiro andar");
     glClearColor(255, 255, 255, 1.0);
     glutDisplayFunc(first_floor);
     glutKeyboardFunc(scan);
     glutKeyboardUpFunc(keyup);
-    
+
     glutMainLoop();
     return 0;
 }
