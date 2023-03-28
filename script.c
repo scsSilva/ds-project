@@ -4,17 +4,19 @@
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
+#include "./utils/utils.h"
 #include <SOIL/SOIL.h>
 
 float angle = 0.0;
 
 void ground_floor()
 {
+    // CONFIGURAÇÕES INICIAIS
     glClear(GL_COLOR_BUFFER_BIT);
 
     // TÍTULO
     glColor3f(0.0, 0.0, 0.0);
-    glRasterPos2f(-0.88, -0.97);
+    glRasterPos2f(-0.9, -0.97);
     glutBitmapString(GLUT_BITMAP_HELVETICA_18, "PLANTA BAIXA - PAV. TERREO");
 
     glTranslatef(0.0f, 0.0f, 0.0f);
@@ -41,20 +43,24 @@ void ground_floor()
     // "PAREDES"
     glColor3f(255, 255, 255);
     glBegin(GL_QUADS);
+    glVertex2f(0.58, -0.88);
     glVertex2f(-0.88, -0.88);
     glVertex2f(-0.88, 0.88);
     glVertex2f(0.88, 0.88);
     glVertex2f(0.88, -0.88);
+    glVertex2f(0.65, -0.88);
     glEnd();
 
     // BORDA DO QUADRADO QUE REPRESENTA AS "PAREDES"
     glLineWidth(1.0);
     glColor3f(0, 0, 0);
-    glBegin(GL_LINE_LOOP);
+    glBegin(GL_LINE_STRIP);
+    glVertex2f(0.58, -0.88);
     glVertex2f(-0.88, -0.88);
     glVertex2f(-0.88, 0.88);
     glVertex2f(0.88, 0.88);
     glVertex2f(0.88, -0.88);
+    glVertex2f(0.65, -0.88);
     glEnd();
 
     // SALA DE JOGOS/ARTES
@@ -76,7 +82,7 @@ void ground_floor()
     // BORDA DA SALA DE JOGOS/ARTES
     glLineWidth(1.0);
     glColor3f(0, 0, 0);
-    glBegin(GL_LINE_LOOP);
+    glBegin(GL_LINE_STRIP);
     glVertex2f(-0.28, -0.88);
     glVertex2f(-0.28, -0.28);
     glVertex2f(-0.08, -0.28);
@@ -236,6 +242,42 @@ void ground_floor()
     glColor3f(0.0, 0.0, 0.0);
     glRasterPos2f(-0.3, 0.55);
     glutBitmapString(GLUT_BITMAP_HELVETICA_12, "B. SOCIAL");
+
+    drawSpiralStairs(0.7, 0.7);
+    Point p1;
+    p1.x = 0.0;
+    p1.y = 0.89;
+    Point p2;
+    p2.x = -1.0;
+    p2.y = 0.89;
+    Point p3;
+    p3.x = -0.89;
+    p3.y = -0.4;
+    Point p4;
+    p4.x = -0.89;
+    p4.y = -0.95;
+    Point p8;
+    p8.x = 0.89;
+    p8.y = -0.85;
+
+    drawWindow(&p1, 0.3, 1, 0.3);
+    drawWindow(&p2, 0.15, 1, 0.3);
+    drawWindow(&p3, 0.22, 0, 0.3);
+    drawWindow(&p4, 0.22, 0, 0.3);
+    drawWindow(&p8, 0.22, 0, 0.3);
+
+    Point p5;
+    p5.x = -0.089;
+    p5.y = 0.6;
+    Point p6;
+    p6.x = -0.52;
+    p6.y = 0.22;
+    Point p7;
+    p7.x = 0.5;
+    p7.y = -0.9;
+    drawDoorSliding(&p5, 0.24, 0, 0.0);
+    drawDoorSliding(&p6, 0.18, 1, -0.06);
+    draw_door(&p7, 0.15, 1);
 
     glFlush();
 }
@@ -545,6 +587,40 @@ void first_floor()
     glColor3f(0.0, 0.0, 0.0);
     glRasterPos2f(0.7, -0.3);
     glutBitmapString(GLUT_BITMAP_HELVETICA_12, "WCB 1");
+    drawSpiralStairs(0.7, 0.7);
+    Point p;
+    p.x = 0.3;
+    p.y = -0.02;
+    Point p2;
+    p2.x = 0.30;
+    p2.y = 0.52;
+    Point p3;
+    p3.x = 0.30;
+    p3.y = 0.62;
+    Point p4;
+    p4.x = -0.3;
+    p4.y = 0.3;
+    Point p5;
+    p5.x = 0.3;
+    p5.y = 0.89;
+    Point p6;
+    p6.x = -0.3;
+    p6.y = 0.89;
+    Point p7;
+    p7.x = -0.6;
+    p7.y = 0.89;
+
+    Point p8;
+    p8.x = 0.89;
+    p8.y = -0.6;
+    draw_door(&p, 0.2, 1);
+    draw_door(&p2, 0.08, 0);
+    draw_door(&p3, 0.08, 0);
+    draw_door(&p4, 0.08, 0);
+    drawWindow(&p5, 0.15, 1, 0.3);
+    drawWindow(&p6, 0.15, 1, 0.3);
+    drawWindow(&p7, 0.15, 1, 0.3);
+    drawWindow(&p8, 0.15, 0, 0.3);
 
     glutSwapBuffers();
     glFlush();
@@ -552,10 +628,14 @@ void first_floor()
 
 void scan(char *orientacao)
 {
-    if (strcmp(orientacao, "leste") == 0) angle = 270;
-    else if (strcmp(orientacao, "sul") == 0) angle = 180;
-    else if (strcmp(orientacao, "oeste") == 0) angle = 90;
-    else angle = 0;
+    if (strcmp(orientacao, "leste") == 0)
+        angle = 270;
+    else if (strcmp(orientacao, "sul") == 0)
+        angle = 180;
+    else if (strcmp(orientacao, "oeste") == 0)
+        angle = 90;
+    else
+        angle = 0;
 }
 
 int main(int argc, char **argv)
