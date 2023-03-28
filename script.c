@@ -7,20 +7,20 @@
 #include "./utils/utils.h"
 #include <SOIL/SOIL.h>
 
-int screen = 0;
 float angle = 0.0;
-int north_pressed = 0;
-int south_pressed = 0;
-int east_pressed = 0;
-int west_pressed = 0;
-int keys[256];
 
 void ground_floor()
 {
-
     // CONFIGURAÇÕES INICIAIS
     glClear(GL_COLOR_BUFFER_BIT);
 
+    // TÍTULO
+    glColor3f(0.0, 0.0, 0.0);
+    glRasterPos2f(-0.88, -0.97);
+    glutBitmapString(GLUT_BITMAP_HELVETICA_18, "PLANTA BAIXA - PAV. TERREO");
+
+    glTranslatef(0.0f, 0.0f, 0.0f);
+    glRotatef(angle, 0.0f, 0.0f, 1.0f);
     // TERRENO QUADRADO
     glColor3f(255, 255, 255);
     glBegin(GL_QUADS);
@@ -29,6 +29,7 @@ void ground_floor()
     glVertex2f(0.9, 0.9);
     glVertex2f(0.9, -0.9);
     glEnd();
+
 
     // TÍTULO
     glColor3f(0.0, 0.0, 0.0);
@@ -69,8 +70,8 @@ void ground_floor()
     glBegin(GL_QUADS);
     glVertex2f(-0.28, -0.88);
     glVertex2f(-0.28, -0.28);
-    glVertex2f(-0.05, -0.28);
-    glVertex2f(-0.05, -0.18);
+    glVertex2f(-0.08, -0.28);
+    glVertex2f(-0.08, -0.18);
     glVertex2f(0.88, -0.18);
     glVertex2f(0.88, -0.88);
     glEnd();
@@ -78,7 +79,7 @@ void ground_floor()
     // NOME "SALA DE JOGOS/ARTES"
     glColor3f(0.0, 0.0, 0.0);
     glRasterPos2f(0.24, -0.55);
-    glutBitmapString(GLUT_BITMAP_HELVETICA_18, "SALA DE JOGOS/ARTES");
+    glutBitmapString(GLUT_BITMAP_HELVETICA_12, "SALA DE JOGOS/ARTES");
 
     // BORDA DA SALA DE JOGOS/ARTES
     glLineWidth(1.0);
@@ -86,8 +87,8 @@ void ground_floor()
     glBegin(GL_LINE_LOOP);
     glVertex2f(-0.28, -0.88);
     glVertex2f(-0.28, -0.28);
-    glVertex2f(-0.05, -0.28);
-    glVertex2f(-0.05, -0.18);
+    glVertex2f(-0.08, -0.28);
+    glVertex2f(-0.08, -0.18);
     glVertex2f(0.88, -0.18);
     glVertex2f(0.88, -0.88);
     glEnd();
@@ -118,22 +119,22 @@ void ground_floor()
     // NOME "SALA DE JANTAR"
     glColor3f(0.0, 0.0, 0.0);
     glRasterPos2f(-0.7, -0.55);
-    glutBitmapString(GLUT_BITMAP_HELVETICA_18, "SALA DE JANTAR");
+    glutBitmapString(GLUT_BITMAP_HELVETICA_12, "SALA DE JANTAR");
 
     // COZINHA
     glColor3f(255, 255, 255);
     glBegin(GL_QUADS);
     glVertex2f(-0.32, -0.28);
-    glVertex2f(-0.32, -0.24);
-    glVertex2f(-0.1, -0.24);
+    glVertex2f(-0.32, -0.26);
+    glVertex2f(-0.1, -0.26);
     glVertex2f(-0.1, 0.2);
     glVertex2f(-0.4, 0.2);
-    glVertex2f(-0.4, 0.24);
-    glVertex2f(-0.58, 0.24);
+    glVertex2f(-0.4, 0.26);
+    glVertex2f(-0.58, 0.26);
     glVertex2f(-0.58, 0.2);
     glVertex2f(-0.88, 0.2);
-    glVertex2f(-0.88, -0.24);
-    glVertex2f(-0.58, -0.24);
+    glVertex2f(-0.88, -0.26);
+    glVertex2f(-0.58, -0.26);
     glVertex2f(-0.58, -0.28);
     glEnd();
 
@@ -142,29 +143,29 @@ void ground_floor()
     glColor3f(0, 0, 0);
     glBegin(GL_LINE_STRIP);
     glVertex2f(-0.32, -0.28);
-    glVertex2f(-0.32, -0.24);
-    glVertex2f(-0.1, -0.24);
+    glVertex2f(-0.32, -0.26);
+    glVertex2f(-0.1, -0.26);
     glVertex2f(-0.1, 0.2);
     glVertex2f(-0.4, 0.2);
-    glVertex2f(-0.4, 0.24);
-    glVertex2f(-0.58, 0.24);
+    glVertex2f(-0.4, 0.26);
+    glVertex2f(-0.58, 0.26);
     glVertex2f(-0.58, 0.2);
     glVertex2f(-0.88, 0.2);
-    glVertex2f(-0.88, -0.24);
-    glVertex2f(-0.58, -0.24);
+    glVertex2f(-0.88, -0.26);
+    glVertex2f(-0.58, -0.26);
     glVertex2f(-0.58, -0.28);
     glEnd();
 
     // NOME "COZINHA"
     glColor3f(0.0, 0.0, 0.0);
     glRasterPos2f(-0.58, -0.05);
-    glutBitmapString(GLUT_BITMAP_HELVETICA_18, "COZINHA");
+    glutBitmapString(GLUT_BITMAP_HELVETICA_12, "COZINHA");
 
     // ÁREA DE SERVIÇO
     glColor3f(255, 255, 255);
     glBegin(GL_QUADS);
-    glVertex2f(-0.4, 0.24);
-    glVertex2f(-0.4, 0.88);
+    glVertex2f(-0.38, 0.24);
+    glVertex2f(-0.38, 0.88);
     glVertex2f(-0.88, 0.88);
     glVertex2f(-0.88, 0.24);
     glEnd();
@@ -173,8 +174,8 @@ void ground_floor()
     glLineWidth(1.0);
     glColor3f(0, 0, 0);
     glBegin(GL_LINE_LOOP);
-    glVertex2f(-0.4, 0.24);
-    glVertex2f(-0.4, 0.88);
+    glVertex2f(-0.38, 0.24);
+    glVertex2f(-0.38, 0.88);
     glVertex2f(-0.88, 0.88);
     glVertex2f(-0.88, 0.24);
     glEnd();
@@ -182,67 +183,67 @@ void ground_floor()
     // NOME "ÁREA DE SERVIÇO"
     glColor3f(0.0, 0.0, 0.0);
     glRasterPos2f(-0.78, 0.6);
-    glutBitmapString(GLUT_BITMAP_HELVETICA_18, "AREA DE SERVICO");
+    glutBitmapString(GLUT_BITMAP_HELVETICA_12, "AREA DE SERVICO");
 
     // SALA DE ESTAR
     glColor3f(255, 255, 255);
     glBegin(GL_QUADS);
-    glVertex2f(-0.05, 0.84);
-    glVertex2f(-0.05, 0.88);
+    glVertex2f(-0.08, 0.84);
+    glVertex2f(-0.08, 0.88);
     glVertex2f(0.88, 0.88);
     glVertex2f(0.88, -0.18);
-    glVertex2f(-0.05, -0.18);
-    glVertex2f(-0.05, 0.6);
+    glVertex2f(-0.08, -0.18);
+    glVertex2f(-0.08, 0.6);
     glEnd();
 
     // BORDA DA SALA DE ESTAR
     glLineWidth(1.0);
     glColor3f(0, 0, 0);
     glBegin(GL_LINE_STRIP);
-    glVertex2f(-0.05, 0.84);
-    glVertex2f(-0.05, 0.88);
+    glVertex2f(-0.08, 0.84);
+    glVertex2f(-0.08, 0.88);
     glVertex2f(0.88, 0.88);
     glVertex2f(0.88, -0.18);
-    glVertex2f(-0.05, -0.18);
-    glVertex2f(-0.05, 0.6);
+    glVertex2f(-0.08, -0.18);
+    glVertex2f(-0.08, 0.6);
     glEnd();
 
     // NOME "SALA DE ESTAR"
     glColor3f(0.0, 0.0, 0.0);
     glRasterPos2f(0.25, 0.35);
-    glutBitmapString(GLUT_BITMAP_HELVETICA_18, "SALA DE ESTAR");
+    glutBitmapString(GLUT_BITMAP_HELVETICA_12, "SALA DE ESTAR");
 
     // BANHEIRO SOCIAL
     glColor3f(255, 255, 255);
     glBegin(GL_QUADS);
-    glVertex2f(-0.05, 0.6);
+    glVertex2f(-0.08, 0.6);
     glVertex2f(-0.1, 0.6);
-    glVertex2f(-0.1, 0.24);
-    glVertex2f(-0.36, 0.24);
+    glVertex2f(-0.1, 0.22);
+    glVertex2f(-0.36, 0.22);
     glVertex2f(-0.36, 0.88);
     glVertex2f(-0.1, 0.88);
     glVertex2f(-0.1, 0.84);
-    glVertex2f(-0.05, 0.84);
+    glVertex2f(-0.08, 0.84);
     glEnd();
 
     // BORDA DO BANHEIRO SOCIAL
     glLineWidth(1.0);
     glColor3f(0, 0, 0);
     glBegin(GL_LINE_STRIP);
-    glVertex2f(-0.05, 0.6);
+    glVertex2f(-0.08, 0.6);
     glVertex2f(-0.1, 0.6);
-    glVertex2f(-0.1, 0.24);
-    glVertex2f(-0.36, 0.24);
+    glVertex2f(-0.1, 0.22);
+    glVertex2f(-0.36, 0.22);
     glVertex2f(-0.36, 0.88);
     glVertex2f(-0.1, 0.88);
     glVertex2f(-0.1, 0.84);
-    glVertex2f(-0.05, 0.84);
+    glVertex2f(-0.08, 0.84);
     glEnd();
 
     // NOME "SALA DE ESTAR"
     glColor3f(0.0, 0.0, 0.0);
     glRasterPos2f(-0.3, 0.55);
-    glutBitmapString(GLUT_BITMAP_HELVETICA_18, "B. SOCIAL");
+    glutBitmapString(GLUT_BITMAP_HELVETICA_12, "B. SOCIAL");
 
     drawSpiralStairs(0.7, 0.7);
     Point p1;
@@ -265,27 +266,7 @@ void ground_floor()
     glFlush();
 }
 
-void update(int value)
-{
-    if (keys['n'])
-    {
-        angle = 0;
-    }
-    if (keys['l'])
-    {
-        angle = -90;
-    }
-    if (keys['s'])
-    {
-        angle = 180;
-    }
-    if (keys['o'])
-    {
-        angle = 90;
-    }
-    glutPostRedisplay();
-    glutTimerFunc(16, update, 0);
-}
+
 
 void first_floor()
 {
@@ -294,7 +275,11 @@ void first_floor()
 
     // CONFIGURAÇÕES INICIAIS
     glClear(GL_COLOR_BUFFER_BIT);
-    glEnable(GL_TEXTURE_2D);
+
+    // TÍTULO
+    glColor3f(0.0, 0.0, 0.0);
+    glRasterPos2f(-0.88, -0.97);
+    glutBitmapString(GLUT_BITMAP_HELVETICA_18, "PLANTA BAIXA - PAV. SUPERIOR");
 
     glColor3f(1.0f, 1.0f, 1.0f); // Branco
     glBegin(GL_QUADS);
@@ -315,10 +300,6 @@ void first_floor()
     glVertex2f(0.9, 0.9);
     glVertex2f(0.9, -0.9);
     glEnd();
-
-    glColor3f(0.0, 0.0, 0.0);
-    glRasterPos2f(-0.88, -0.97);
-    glutBitmapString(GLUT_BITMAP_HELVETICA_18, "PLANTA BAIXA - PAV. SUPERIOR");
 
     // BORDA DO TERRENO
     glLineWidth(1.0);
@@ -371,7 +352,8 @@ void first_floor()
     // NOME "SALA DE LEITURA"
     glColor3f(0.0, 0.0, 0.0);
     glRasterPos2f(-0.1, -0.73);
-    glutBitmapString(GLUT_BITMAP_HELVETICA_18, "SACADA");
+    glutBitmapString(GLUT_BITMAP_HELVETICA_12, "SACADA");
+
 
     // SALA DE LEITURA
     glColor3f(255, 255, 255);
@@ -404,7 +386,7 @@ void first_floor()
     // NOME "SALA DE JANTAR"
     glColor3f(0.0, 0.0, 0.0);
     glRasterPos2f(-0.6, -0.28);
-    glutBitmapString(GLUT_BITMAP_HELVETICA_18, "SALA DE LEITURA");
+    glutBitmapString(GLUT_BITMAP_HELVETICA_12, "SALA DE LEITURA");
 
     // WCB 1
     glColor3f(255, 255, 255);
@@ -432,7 +414,7 @@ void first_floor()
     // NOME "WCB 1"
     glColor3f(0.0, 0.0, 0.0);
     glRasterPos2f(-0.8, 0.5);
-    glutBitmapString(GLUT_BITMAP_HELVETICA_18, "WCB 1");
+    glutBitmapString(GLUT_BITMAP_HELVETICA_12, "WCB 1");
 
     // CLOSET & SUÍTE
     glColor3f(255, 255, 255);
@@ -466,12 +448,12 @@ void first_floor()
     // NOME "CLOSET"
     glColor3f(0.0, 0.0, 0.0);
     glRasterPos2f(-0.7, 0.8);
-    glutBitmapString(GLUT_BITMAP_HELVETICA_18, "CLOSET");
+    glutBitmapString(GLUT_BITMAP_HELVETICA_12, "CLOSET");
 
     // NOME "SUITE"
     glColor3f(0.0, 0.0, 0.0);
     glRasterPos2f(-0.3, 0.4);
-    glutBitmapString(GLUT_BITMAP_HELVETICA_18, "SUITE");
+    glutBitmapString(GLUT_BITMAP_HELVETICA_12, "SUITE");
 
     // ESCRITÓRIO
     glColor3f(255, 255, 255);
@@ -501,7 +483,7 @@ void first_floor()
 
     // NOME "ESCRITÓRIO"
     glColor3f(0.0, 0.0, 0.0);
-    glRasterPos2f(0, 0.35);
+    glRasterPos2f(-0.06, 0.4);
     glutBitmapString(GLUT_BITMAP_HELVETICA_12, "ESCRITORIO");
 
     // SALA DE ESTUDOS
@@ -589,7 +571,7 @@ void first_floor()
     // NOME "SUITE"
     glColor3f(0.0, 0.0, 0.0);
     glRasterPos2f(0.3, -0.3);
-    glutBitmapString(GLUT_BITMAP_HELVETICA_18, "SUITE");
+    glutBitmapString(GLUT_BITMAP_HELVETICA_12, "SUITE");
 
     // NOME "WCB 1"
     glColor3f(0.0, 0.0, 0.0);
@@ -634,72 +616,39 @@ void first_floor()
     glFlush();
 }
 
-void scan(unsigned char key, int x, int y)
+void scan(char *orientacao)
 {
-    keys[key] = 1;
-    switch (key)
-    {
-    case 'n':
-        if (angle != 0)
-        {
-            angle = 0;
-            glutPostRedisplay();
-            printf("TECLA %c PRESSIONADA. ANGULO = %lf\n", key, angle);
-        }
-
-        break;
-    case 'l':
-        if (angle != -90)
-        {
-            angle = -90;
-            glutPostRedisplay();
-            printf("TECLA %c PRESSIONADA. ANGULO = %lf\n", key, angle);
-        }
-
-        break;
-    case 's':
-        if (angle != 180)
-        {
-            angle = 180;
-            glutPostRedisplay();
-            printf("TECLA %c PRESSIONADA. ANGULO = %lf\n", key, angle);
-        }
-
-        break;
-    case 'o':
-        if (angle != 90)
-        {
-            angle = 90;
-            glutPostRedisplay();
-            printf("TECLA %c PRESSIONADA. ANGULO = %lf\n", key, angle);
-        }
-
-        break;
-    default:
-        break;
-    }
-}
-
-void keyup(unsigned char key, int x, int y)
-{
-    keys[key] = 0;
+    if (strcmp(orientacao, "leste") == 0) angle = 270;
+    else if (strcmp(orientacao, "sul") == 0) angle = 180;
+    else if (strcmp(orientacao, "oeste") == 0) angle = 90;
+    else angle = 0;
 }
 
 int main(int argc, char **argv)
 {
+    for (int i = 1; i < argc; i++)
+    {
+        if (strcmp(argv[i], "-orientacao") == 0)
+        {
+            if (i + 1 < argc)
+            {
+                scan(argv[i + 1]);
+                break;
+            }
+        }
+    }
+
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
     glutInitWindowSize(1100, 800);
 
     glutCreateWindow("Terreo");
-    glutDisplayFunc(ground_floor);
     glClearColor(255, 255, 255, 1.0);
+    glutDisplayFunc(ground_floor);
 
     glutCreateWindow("Primeiro andar");
     glClearColor(255, 255, 255, 1.0);
     glutDisplayFunc(first_floor);
-    glutKeyboardFunc(scan);
-    glutKeyboardUpFunc(keyup);
 
     glutMainLoop();
     return 0;
