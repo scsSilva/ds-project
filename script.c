@@ -43,20 +43,24 @@ void ground_floor()
     // "PAREDES"
     glColor3f(255, 255, 255);
     glBegin(GL_QUADS);
+    glVertex2f(0.58, -0.88);
     glVertex2f(-0.88, -0.88);
     glVertex2f(-0.88, 0.88);
     glVertex2f(0.88, 0.88);
     glVertex2f(0.88, -0.88);
+    glVertex2f(0.65, -0.88);
     glEnd();
 
     // BORDA DO QUADRADO QUE REPRESENTA AS "PAREDES"
     glLineWidth(1.0);
     glColor3f(0, 0, 0);
-    glBegin(GL_LINE_LOOP);
+    glBegin(GL_LINE_STRIP);
+    glVertex2f(0.58, -0.88);
     glVertex2f(-0.88, -0.88);
     glVertex2f(-0.88, 0.88);
     glVertex2f(0.88, 0.88);
     glVertex2f(0.88, -0.88);
+    glVertex2f(0.65, -0.88);
     glEnd();
 
     // SALA DE JOGOS/ARTES
@@ -78,7 +82,7 @@ void ground_floor()
     // BORDA DA SALA DE JOGOS/ARTES
     glLineWidth(1.0);
     glColor3f(0, 0, 0);
-    glBegin(GL_LINE_LOOP);
+    glBegin(GL_LINE_STRIP);
     glVertex2f(-0.28, -0.88);
     glVertex2f(-0.28, -0.28);
     glVertex2f(-0.08, -0.28);
@@ -252,11 +256,15 @@ void ground_floor()
     Point p4;
     p4.x = -0.89;
     p4.y = -0.95;
+    Point p8;
+    p8.x = 0.89;
+    p8.y = -0.85;
 
     drawWindow(&p1, 0.3, 1, 0.3);
     drawWindow(&p2, 0.15, 1, 0.3);
     drawWindow(&p3, 0.22, 0, 0.3);
     drawWindow(&p4, 0.22, 0, 0.3);
+    drawWindow(&p8, 0.22, 0, 0.3);
 
     Point p5;
     p5.x = -0.089;
@@ -264,8 +272,12 @@ void ground_floor()
     Point p6;
     p6.x = -0.52;
     p6.y = 0.22;
+    Point p7;
+    p7.x = 0.5;
+    p7.y = -0.9;
     drawDoorSliding(&p5, 0.24, 0, 0.0);
     drawDoorSliding(&p6, 0.18, 1, -0.06);
+    draw_door(&p7, 0.15, 1);
 
     glFlush();
 }
