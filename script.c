@@ -14,7 +14,6 @@ void ground_floor()
     // CONFIGURAÇÕES INICIAIS
     glClear(GL_COLOR_BUFFER_BIT);
 
-
     // TÍTULO
     glColor3f(0.0, 0.0, 0.0);
     glRasterPos2f(-0.9, -0.97);
@@ -30,8 +29,6 @@ void ground_floor()
     glVertex2f(0.9, 0.9);
     glVertex2f(0.9, -0.9);
     glEnd();
-
-
 
     // BORDA DO TERRENO
     glLineWidth(1.0);
@@ -255,15 +252,23 @@ void ground_floor()
     Point p4;
     p4.x = -0.89;
     p4.y = -0.95;
+
     drawWindow(&p1, 0.3, 1, 0.3);
     drawWindow(&p2, 0.15, 1, 0.3);
     drawWindow(&p3, 0.22, 0, 0.3);
     drawWindow(&p4, 0.22, 0, 0.3);
 
+    Point p5;
+    p5.x = -0.089;
+    p5.y = 0.6;
+    Point p6;
+    p6.x = -0.52;
+    p6.y = 0.22;
+    drawDoorSliding(&p5, 0.24, 0, 0.0);
+    drawDoorSliding(&p6, 0.18, 1, -0.06);
+
     glFlush();
 }
-
-
 
 void first_floor()
 {
@@ -347,7 +352,6 @@ void first_floor()
     glColor3f(0.0, 0.0, 0.0);
     glRasterPos2f(-0.1, -0.73);
     glutBitmapString(GLUT_BITMAP_HELVETICA_12, "SACADA");
-
 
     // SALA DE LEITURA
     glColor3f(255, 255, 255);
@@ -612,10 +616,14 @@ void first_floor()
 
 void scan(char *orientacao)
 {
-    if (strcmp(orientacao, "leste") == 0) angle = 270;
-    else if (strcmp(orientacao, "sul") == 0) angle = 180;
-    else if (strcmp(orientacao, "oeste") == 0) angle = 90;
-    else angle = 0;
+    if (strcmp(orientacao, "leste") == 0)
+        angle = 270;
+    else if (strcmp(orientacao, "sul") == 0)
+        angle = 180;
+    else if (strcmp(orientacao, "oeste") == 0)
+        angle = 90;
+    else
+        angle = 0;
 }
 
 int main(int argc, char **argv)

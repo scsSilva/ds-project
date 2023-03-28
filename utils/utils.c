@@ -103,6 +103,31 @@ void draw_door(Point *position, float raio, int mirror)
     }
 }
 
+void drawDoorSliding(Point *position, float size, int horientation, float moving)
+{
+    if (horientation)
+    {
+        glLineWidth(5.0);
+        float startX = position->x; // coordenada x da posição inicial da linha horizontal
+        float endX = startX + size; // coordenada x da posição final da linha horizontal
+        glBegin(GL_LINES);
+        glVertex2f(startX + moving, position->y);
+        glVertex2f(endX + moving, position->y);
+        glEnd();
+    }
+    else
+    {
+        glLineWidth(5.0);
+        float startY = position->y; // coordenada y da posição inicial da linha vertical
+        float endY = startY + size; // coordenada y da posição final da linha vertical
+        glBegin(GL_LINES);
+        glVertex2f(position->x, startY + moving);
+        glVertex2f(position->x, endY + moving);
+        glEnd();
+    }
+}
+
+
 void drawSpiralStairs(float x, float y)
 {
     const float radius = 0.1;
