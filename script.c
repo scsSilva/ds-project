@@ -14,9 +14,10 @@ void ground_floor()
     // CONFIGURAÇÕES INICIAIS
     glClear(GL_COLOR_BUFFER_BIT);
 
+
     // TÍTULO
     glColor3f(0.0, 0.0, 0.0);
-    glRasterPos2f(-0.88, -0.97);
+    glRasterPos2f(-0.9, -0.97);
     glutBitmapString(GLUT_BITMAP_HELVETICA_18, "PLANTA BAIXA - PAV. TERREO");
 
     glTranslatef(0.0f, 0.0f, 0.0f);
@@ -31,10 +32,6 @@ void ground_floor()
     glEnd();
 
 
-    // TÍTULO
-    glColor3f(0.0, 0.0, 0.0);
-    glRasterPos2f(-0.9, -0.97);
-    glutBitmapString(GLUT_BITMAP_HELVETICA_18, "PLANTA BAIXA - PAV. TERREO");
 
     // BORDA DO TERRENO
     glLineWidth(1.0);
@@ -270,9 +267,6 @@ void ground_floor()
 
 void first_floor()
 {
-    printf("ANGLE = %lf\n", angle);
-    glutTimerFunc(10, update, 0);
-
     // CONFIGURAÇÕES INICIAIS
     glClear(GL_COLOR_BUFFER_BIT);
 
