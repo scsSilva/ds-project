@@ -17,8 +17,16 @@ void ground_floor()
 
     // TÍTULO
     glColor3f(0.0, 0.0, 0.0);
-    glRasterPos2f(-0.9, -0.97);
-    glutBitmapString(GLUT_BITMAP_HELVETICA_18, "PLANTA BAIXA - PAV. TERREO");
+    glRasterPos2f(-0.88, -0.97);
+    if (angle == 0) {
+        glutBitmapString(GLUT_BITMAP_HELVETICA_18, "PLANTA BAIXA - PAV. TERREO NORTE");
+    } else if (angle == 90) {
+        glutBitmapString(GLUT_BITMAP_HELVETICA_18, "PLANTA BAIXA - PAV. TERREO OESTE");
+    } else if (angle == 180) {
+        glutBitmapString(GLUT_BITMAP_HELVETICA_18, "PLANTA BAIXA - PAV. TERREO SUL");
+    } else {
+        glutBitmapString(GLUT_BITMAP_HELVETICA_18, "PLANTA BAIXA - PAV. TERREO LESTE");
+    }
 
     glTranslatef(0.0f, 0.0f, 0.0f);
     glRotatef(angle, 0.0f, 0.0f, 1.0f);
@@ -117,7 +125,11 @@ void ground_floor()
 
     // NOME "SALA DE JANTAR"
     glColor3f(0.0, 0.0, 0.0);
-    glRasterPos2f(-0.7, -0.55);
+    if (angle == 180) {
+        glRasterPos2f(-0.65, -0.55);
+    } else {
+        glRasterPos2f(-0.7, -0.55);
+    }
     glutBitmapString(GLUT_BITMAP_HELVETICA_12, "SALA DE JANTAR");
 
     // COZINHA
@@ -181,7 +193,11 @@ void ground_floor()
 
     // NOME "ÁREA DE SERVIÇO"
     glColor3f(0.0, 0.0, 0.0);
-    glRasterPos2f(-0.78, 0.6);
+    if (angle == 180) {
+        glRasterPos2f(-0.65, 0.6);
+    } else {
+        glRasterPos2f(-0.78, 0.6);
+    }
     glutBitmapString(GLUT_BITMAP_HELVETICA_12, "AREA DE SERVICO");
 
     // SALA DE ESTAR
@@ -241,7 +257,11 @@ void ground_floor()
 
     // NOME "SALA DE ESTAR"
     glColor3f(0.0, 0.0, 0.0);
-    glRasterPos2f(-0.3, 0.55);
+    if (angle == 180) {
+        glRasterPos2f(-0.2, 0.55);
+    } else {
+        glRasterPos2f(-0.3, 0.55);
+    }
     glutBitmapString(GLUT_BITMAP_HELVETICA_12, "B. SOCIAL");
 
     drawSpiralStairs(0.7, 0.7);
@@ -291,7 +311,16 @@ void first_floor()
     // TÍTULO
     glColor3f(0.0, 0.0, 0.0);
     glRasterPos2f(-0.88, -0.97);
-    glutBitmapString(GLUT_BITMAP_HELVETICA_18, "PLANTA BAIXA - PAV. SUPERIOR");
+    
+    if (angle == 0) {
+        glutBitmapString(GLUT_BITMAP_HELVETICA_18, "PLANTA BAIXA - PAV. SUPERIOR NORTE");
+    } else if (angle == 90) {
+        glutBitmapString(GLUT_BITMAP_HELVETICA_18, "PLANTA BAIXA - PAV. SUPERIOR OESTE");
+    } else if (angle == 180) {
+        glutBitmapString(GLUT_BITMAP_HELVETICA_18, "PLANTA BAIXA - PAV. SUPERIOR SUL");
+    } else {
+        glutBitmapString(GLUT_BITMAP_HELVETICA_18, "PLANTA BAIXA - PAV. SUPERIOR LESTE");
+    }
 
     glColor3f(1.0f, 1.0f, 1.0f); // Branco
     glBegin(GL_QUADS);
@@ -458,7 +487,11 @@ void first_floor()
 
     // NOME "CLOSET"
     glColor3f(0.0, 0.0, 0.0);
-    glRasterPos2f(-0.7, 0.8);
+    if (angle == 270) {
+        glRasterPos2f(-0.7, 0.75);
+    } else {
+        glRasterPos2f(-0.7, 0.8);
+    }
     glutBitmapString(GLUT_BITMAP_HELVETICA_12, "CLOSET");
 
     // NOME "SUITE"
@@ -494,7 +527,15 @@ void first_floor()
 
     // NOME "ESCRITÓRIO"
     glColor3f(0.0, 0.0, 0.0);
-    glRasterPos2f(-0.06, 0.4);
+    if (angle == 270) {
+        glRasterPos2f(0, 0.4);
+    } else if (angle == 180) {
+        glRasterPos2f(0.12, 0.4);
+    } else if (angle == 90) {
+        glRasterPos2f(0.1, 0.5);
+    } else {
+        glRasterPos2f(-0.06, 0.4);
+    }
     glutBitmapString(GLUT_BITMAP_HELVETICA_12, "ESCRITORIO");
 
     // SALA DE ESTUDOS
@@ -526,7 +567,13 @@ void first_floor()
 
     // NOME "SALA DE ESTUDOS"
     glColor3f(0.0, 0.0, 0.0);
-    glRasterPos2f(0, 0.65);
+    if (angle == 180) {
+        glRasterPos2f(0.2, 0.7);
+    } else if (angle == 90) {
+        glRasterPos2f(0.1, 0.85);
+    } else {
+        glRasterPos2f(0, 0.65);
+    }
     glutBitmapString(GLUT_BITMAP_HELVETICA_12, "SALA DE ESTUDOS");
 
     // CLOSET - SUITE - WCB 1
@@ -568,7 +615,11 @@ void first_floor()
 
     // NOME "CLOSET"
     glColor3f(0.0, 0.0, 0.0);
-    glRasterPos2f(-0.1, -0.3);
+    if (angle == 180) {
+        glRasterPos2f(0.05, -0.3);
+    } else {
+        glRasterPos2f(-0.1, -0.3);
+    }
     glutBitmapString(GLUT_BITMAP_HELVETICA_12, "CLOSET");
 
     // SUITE
