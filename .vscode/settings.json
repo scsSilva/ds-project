@@ -2,6 +2,7 @@
     "files.associations": {
         "gl.h": "c",
         "math.h": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "glut.h": "c"
     }
 }
