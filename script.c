@@ -54,11 +54,6 @@ void ground_floor()
     glVertex2f(0.88, -0.88);
     glEnd();
 
-    Point p;
-    p.x = -0.58f;
-    p.y = 0.0f;
-    // draw_door(&p, 0.25);
-
     // BORDA DO QUADRADO QUE REPRESENTA AS "PAREDES"
     glLineWidth(1.0);
     glColor3f(0, 0, 0);
@@ -250,6 +245,22 @@ void ground_floor()
     glutBitmapString(GLUT_BITMAP_HELVETICA_18, "B. SOCIAL");
 
     drawSpiralStairs(0.7, 0.7);
+    Point p1;
+    p1.x = 0.0;
+    p1.y = 0.89;
+    Point p2;
+    p2.x = -1.0;
+    p2.y = 0.89;
+    Point p3;
+    p3.x = -0.89;
+    p3.y = -0.4;
+    Point p4;
+    p4.x = -0.89;
+    p4.y = -0.95;
+    drawWindow(&p1, 0.3, 1, 0.3);
+    drawWindow(&p2, 0.15, 1, 0.3);
+    drawWindow(&p3, 0.22, 0, 0.3);
+    drawWindow(&p4, 0.22, 0, 0.3);
 
     glFlush();
 }
