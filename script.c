@@ -8,6 +8,7 @@
 #include <SOIL/SOIL.h>
 
 float angle = 0.0;
+double side = 0.0;
 
 void ground_floor()
 {
@@ -638,6 +639,17 @@ void scan(char *orientacao)
         angle = 0;
 }
 
+double scan_side(char *size)
+{
+    char *endptr;
+    double num = strtod(size, &endptr);
+    return num;
+}
+void reshape()
+{
+    glutReshapeWindow(side, side);
+}
+
 int main(int argc, char **argv)
 {
     for (int i = 1; i < argc; i++)
@@ -652,9 +664,31 @@ int main(int argc, char **argv)
         }
     }
 
+    for (int i = 1; i < argc; i++)
+    {
+        if (strcmp(argv[i], "-lado") == 0)
+        {
+            if (i + 1 < argc)
+            {
+                side = scan_side(argv[i + 1]);
+                break;
+            }
+        }
+    }
+
     glutInit(&argc, argv);
+    glutReshapeFunc(reshape);
+
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
-    glutInitWindowSize(1100, 800);
+    if (side < 800)
+    {
+        printf("\nArea menor que a mínima!\n");
+        return 0;
+    }
+    else
+    {
+        glutInitWindowSize(side, side);
+    }
 
     glutCreateWindow("Terreo");
     glClearColor(255, 255, 255, 1.0);

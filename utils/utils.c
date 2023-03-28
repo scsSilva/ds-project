@@ -15,33 +15,6 @@
 #include <math.h>
 #include <stdio.h>
 
-void draw_square_by_area(double area, Point *p)
-{
-    double width = sqrt(area) / 100;
-    glLineWidth(100.0);
-    glColor3f(0.0, 0.0, 0.0);
-
-    glBegin(GL_LINES);
-    glVertex2f(p->x, p->y);
-    glVertex2f(width, p->y);
-    glEnd();
-
-    glBegin(GL_LINES);
-    glVertex2f(width, p->y);
-    glVertex2f(width, width);
-    glEnd();
-
-    glBegin(GL_LINES);
-    glVertex2f(width, width);
-    glVertex2f(p->x, width);
-    glEnd();
-
-    glBegin(GL_LINES);
-    glVertex2f(p->x, width);
-    glVertex2f(p->x, p->y);
-    glEnd();
-}
-
 void draw_door(Point *position, float raio, int mirror)
 {
     float anguloInicial = 0.0, anguloFinal = 90.0;
@@ -127,7 +100,6 @@ void drawDoorSliding(Point *position, float size, int horientation, float moving
     }
 }
 
-
 void drawSpiralStairs(float x, float y)
 {
     const float radius = 0.1;
@@ -190,11 +162,11 @@ void drawWindow(Point *position, float size, int horientation, float moving)
         glVertex2f(position->x, startY + moving);
         glVertex2f(position->x, endY + moving);
 
-        glVertex2f(position->x -  0.009, startY + moving);
-        glVertex2f(position->x +  0.009, startY + moving);
+        glVertex2f(position->x - 0.009, startY + moving);
+        glVertex2f(position->x + 0.009, startY + moving);
 
-        glVertex2f(position->x -  0.009, endY + moving);
-        glVertex2f(position->x +  0.009, endY + moving);
+        glVertex2f(position->x - 0.009, endY + moving);
+        glVertex2f(position->x + 0.009, endY + moving);
         glEnd();
     }
 }

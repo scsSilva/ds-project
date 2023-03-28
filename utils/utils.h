@@ -19,7 +19,6 @@ typedef struct
     GLfloat y;
 } Point;
 
-void draw_square_by_area(double area, Point* p);
 void draw_door(Point *p, float raio, int mirror);
 void drawSpiralStairs(float x, float y);
 void drawWindow(Point *position, float size, int horientation, float moving);
